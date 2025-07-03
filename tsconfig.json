@@ -10,6 +10,11 @@
   ],
   "compilerOptions": {
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "@openui5/ts-types-esm"
+    ]
   }
 }
