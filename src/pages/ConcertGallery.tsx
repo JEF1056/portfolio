@@ -1,12 +1,30 @@
 import React from 'react';
-import GalleryPage from '../components/Gallery/GalleryPage';
+import { images } from '../galleryData';
 
 const ConcertGallery: React.FC = () => {
   return (
-    <GalleryPage 
-      title="Concert Photography"
-      description="High-energy performances and intimate backstage moments that capture the soul of live music."
-    />
+    <div className="px-40 flex flex-1 justify-center py-5">
+      <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-[#141414] mb-4">Concert Photography</h1>
+          <p className="text-[#757575] text-lg">
+            High-energy concert moments and the electric atmosphere of live performances.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+          {images.map((image, index) => (
+            <div key={index} className="flex flex-col gap-3">
+              <img 
+                className="w-full aspect-[3/4] object-cover rounded-xl hover:opacity-90 transition-opacity"
+                src={image}
+                alt={`Concert Photo ${index + 1}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
