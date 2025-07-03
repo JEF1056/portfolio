@@ -1,43 +1,31 @@
-// App.tsx component
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import { HeroImage } from './components/Gallery';
-import ImageGrid from './components/Gallery/ImageGrid';
-import { images } from './galleryData';
-
-// Define data for our gallery grids
-const portraitImages1 = [
-  { url: images[0], aspectRatio: 'portrait' as const },
-  { url: images[1], aspectRatio: 'portrait' as const },
-  { url: images[2], aspectRatio: 'portrait' as const }
-];
-
-const landscapeImages = [
-  { url: images[0], aspectRatio: 'landscape' as const },
-  { url: images[1], aspectRatio: 'landscape' as const },
-  { url: images[2], aspectRatio: 'landscape' as const }
-];
-
-const portraitImages2 = [
-  { url: images[0], aspectRatio: 'portrait' as const },
-  { url: images[1], aspectRatio: 'portrait' as const },
-  { url: images[2], aspectRatio: 'portrait' as const }
-];
+import Home from './pages/Home';
+import EventGallery from './pages/EventGallery';
+import PortraitGallery from './pages/PortraitGallery';
+import StreetGallery from './pages/StreetGallery';
+import NatureGallery from './pages/NatureGallery';
+import ConcertGallery from './pages/ConcertGallery';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <Layout>
-      {/* Hero Image */}
-      <HeroImage imageUrl={images[0]} />
-      
-      {/* First row of portrait images */}
-      <ImageGrid images={portraitImages1} />
-      
-      {/* Row of landscape images */}
-      <ImageGrid images={landscapeImages} />
-      
-      {/* Second row of portrait images */}
-      <ImageGrid images={portraitImages2} />
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery/event" element={<EventGallery />} />
+          <Route path="/gallery/portrait" element={<PortraitGallery />} />
+          <Route path="/gallery/street" element={<StreetGallery />} />
+          <Route path="/gallery/nature" element={<NatureGallery />} />
+          <Route path="/gallery/concert" element={<ConcertGallery />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
