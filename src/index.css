@@ -120,3 +120,35 @@ body {
 .animation-delay-1000 {
   animation-delay: 1s;
 }
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-fade-in-up,
+  .animate-slide-up {
+    animation-duration: 0.6s;
+  }
+  
+  .animate-expand {
+    animation-duration: 0.8s;
+  }
+  
+  .animate-float,
+  .animate-gentle-zoom {
+    animation-duration: 2s;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-fade-in-up,
+  .animate-slide-up,
+  .animate-expand,
+  .animate-float,
+  .animate-gentle-zoom {
+    animation: none;
+  }
+}
