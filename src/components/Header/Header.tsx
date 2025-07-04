@@ -62,7 +62,6 @@ const Header: React.FC = () => {
       <div className="hidden md:flex flex-1 justify-end gap-8">
         <div className="flex items-center gap-9">
           <Link className="text-[#141414] text-sm font-medium leading-normal hover:text-gray-600" to="/">Home</Link>
-          <Link className="text-[#141414] text-sm font-medium leading-normal hover:text-gray-600" to="/contact">Services</Link>
           <Link className="text-[#141414] text-sm font-medium leading-normal hover:text-gray-600" to="/contact">Contact</Link>
         </div>
         <div className="flex items-center gap-4">
@@ -161,6 +160,7 @@ const Header: React.FC = () => {
                 Home
               </Link>
 
+
               <Link 
                 className={`text-[#141414] text-2xl font-medium leading-normal hover:text-gray-600 transition-all duration-250 ease-out transform ${
                   isMobileMenuOpen && !isClosing 
@@ -171,22 +171,6 @@ const Header: React.FC = () => {
                 }`}
                 style={{ 
                   transitionDelay: isMobileMenuOpen && !isClosing ? '150ms' : isClosing ? '50ms' : '0ms'
-                }}
-                to="/gallery/event" 
-                onClick={closeMobileMenu}
-              >
-                Services
-              </Link>
-              <Link 
-                className={`text-[#141414] text-2xl font-medium leading-normal hover:text-gray-600 transition-all duration-250 ease-out transform ${
-                  isMobileMenuOpen && !isClosing 
-                    ? 'translate-x-0 opacity-100' 
-                    : isClosing 
-                    ? 'translate-x-8 opacity-0' 
-                    : 'translate-x-4 opacity-0'
-                }`}
-                style={{ 
-                  transitionDelay: isMobileMenuOpen && !isClosing ? '200ms' : isClosing ? '100ms' : '0ms'
                 }}
                 to="/contact" 
                 onClick={closeMobileMenu}

@@ -1,156 +1,73 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
   return (
-    <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-[#141414] mb-4">Get In Touch</h1>
-        <p className="text-lg text-gray-600">
-          I'd love to hear about your project and discuss how we can work together.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Contact Info */}
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold text-[#141414] mb-4">Contact Information</h2>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 text-gray-600">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                </div>
-                <span className="text-gray-700">hello@jessfan.com</span>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="px-4 sm:px-8 lg:px-40 flex justify-center py-8 lg:py-12">
+        <div className="flex flex-col max-w-[960px] w-full">
+          <h2 className="text-[#141414] tracking-tight text-2xl sm:text-3xl lg:text-[28px] font-bold leading-tight px-4 text-center pb-6 pt-8">
+            Get In Touch
+          </h2>
+          <p className="text-[#141414] text-base sm:text-lg font-normal leading-normal pb-8 pt-1 px-4 text-center max-w-4xl mx-auto">
+            I'd love to hear about your next project and discuss how we can work together to create something amazing. 
+            Whether you're planning an event, looking for portrait work, or need photography for any occasion, 
+            let's connect and bring your vision to life.
+          </p>
+          
+          {/* Contact Information Card */}
+          <div className="flex justify-center px-4 mb-12">
+            <div className="bg-[#f8f9fa] rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300 max-w-md w-full">
+              <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-[#141414]" />
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 text-gray-600">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                  </svg>
-                </div>
-                <span className="text-gray-700">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 text-gray-600">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <span className="text-gray-700">San Francisco, CA</span>
-              </div>
+              <h3 className="text-xl font-semibold text-[#141414] mb-4">Get In Touch</h3>
+              <a 
+                href="mailto:jessefan2002@gmail.com" 
+                className="text-lg text-[#141414] hover:text-gray-600 transition-colors duration-200 font-medium"
+              >
+                jessefan2002@gmail.com
+              </a>
             </div>
           </div>
           
-          <div>
-            <h3 className="text-xl font-semibold text-[#141414] mb-3">Follow My Work</h3>
-            <div className="flex gap-4">
-              <a href="#" className="text-gray-600 hover:text-[#141414] transition-colors">
-                Instagram
+          {/* Social Media Section */}
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-semibold text-[#141414] mb-6">Follow My Work</h3>
+            <div className="flex justify-center gap-8">
+              {/* Instagram */}
+              <a 
+                href="https://instagram.com/really_not_jake" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center transition-transform duration-300 hover:scale-110"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-400 rounded-full flex items-center justify-center mb-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <FontAwesomeIcon icon={faInstagram} className="text-2xl text-white" />
+                </div>
+                <span className="text-sm font-medium text-[#141414] group-hover:text-gray-600 transition-colors duration-200">
+                  @really_not_jake
+                </span>
               </a>
-              <a href="#" className="text-gray-600 hover:text-[#141414] transition-colors">
-                Facebook
-              </a>
-              <a href="#" className="text-gray-600 hover:text-[#141414] transition-colors">
-                LinkedIn
+
+              
+              {/* Email (as social icon) */}
+              <a 
+                href="mailto:jessefan2002@gmail.com" 
+                className="group flex flex-col items-center transition-transform duration-300 hover:scale-110"
+              >
+                <div className="w-16 h-16 bg-[#141414] rounded-full flex items-center justify-center mb-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
+                </div>
+                <span className="text-sm font-medium text-[#141414] group-hover:text-gray-600 transition-colors duration-200">
+                  Email
+                </span>
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Contact Form */}
-        <div>
-          <h2 className="text-2xl font-bold text-[#141414] mb-4">Send a Message</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              />
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full bg-[#141414] text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors font-medium"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
       </div>
     </div>
