@@ -27,6 +27,12 @@ interface LensProps {
   lensColor?: string;
   /** The aria label of the lens */
   ariaLabel?: string;
+  /** Custom class name for the container element */
+  className?: string;
+  /** Custom class name for the lens content */
+  lensContentClassName?: string;
+  /** Custom class name for the inner content container */
+  innerContentClassName?: string;
 }
 
 export function Lens({
@@ -39,6 +45,9 @@ export function Lens({
   duration = 0.1,
   lensColor = "black",
   ariaLabel = "Zoom Area",
+  className = "",
+  lensContentClassName = "",
+  innerContentClassName = "",
 }: LensProps) {
   if (zoomFactor < 1) {
     throw new Error("zoomFactor must be greater than 1");
@@ -84,7 +93,7 @@ export function Lens({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration }}
-        className="absolute inset-0 overflow-hidden"
+        className={`absolute inset-0 overflow-hidden ${lensContentClassName}`}
         style={{
           maskImage,
           WebkitMaskImage: maskImage,
@@ -93,7 +102,7 @@ export function Lens({
         }}
       >
         <div
-          className="absolute inset-0"
+          className={`absolute inset-0 ${innerContentClassName}`}
           style={{
             transform: `scale(${zoomFactor})`,
             transformOrigin: `${x}px ${y}px`,
@@ -108,7 +117,7 @@ export function Lens({
   return (
     <div
       ref={containerRef}
-      className="relative z-20 overflow-hidden rounded-xl"
+      className={`relative z-20 overflow-hidden rounded-xl ${className}`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onMouseMove={handleMouseMove}

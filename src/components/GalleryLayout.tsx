@@ -61,19 +61,11 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
 
           {selectedImage ? (
             <div className="rounded-xl w-full h-[calc(50vh-3rem)] lg:h-[calc(70vh-3rem)] bg-gray-100 flex-shrink-0 flex items-center justify-center">
-              <Lens zoomFactor={2} lensSize={150}>
+              <Lens zoomFactor={2} lensSize={150} className="h-full w-full">
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.alt}
-                  style={{
-                    maxHeight: "calc(50vh - 3rem)",
-                    maxWidth: "100%",
-                    width: "auto",
-                    height: "auto",
-                    objectFit: "contain",
-                    display: "block",
-                    margin: "0 auto",
-                  }}
+                  className="h-full w-full object-contain"
                   loading="lazy"
                 />
               </Lens>
