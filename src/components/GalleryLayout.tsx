@@ -54,14 +54,14 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </h2>
       )}
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-[60vh] lg:h-[65vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-h-[70vh]">
         {/* Left Side: Image Grid */}
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full max-h-[70vh]">
           <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
             {images.length} photos
           </h3>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1 overflow-y-auto pr-2 max-h-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1 overflow-y-auto pr-2 max-h-[calc(70vh-3rem)]">
             {images.map((image) => {
               const dimensions = getDimensions(image.src);
               
@@ -115,29 +115,29 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </div>
         
         {/* Right Side: Image Lens Preview */}
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full max-h-[70vh]">
           <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
             {selectedImage ? 'Image Preview' : 'Select an Image'}
           </h3>
           
           {selectedImage ? (
-            <div className="w-full aspect-[4/3]">
+            <div className="w-full h-[calc(70vh-3rem)] flex-shrink-0">
               <Lens
                 zoomFactor={2}
                 lensSize={150}
               >
-              <div className="w-full h-full bg-gray-100 rounded-xl overflow-hidden">
+              <div className="w-full h-full bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.alt}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                   loading="lazy"
                 />
               </div>
             </Lens>
             </div>
           ) : (
-            <div className="flex items-center justify-center bg-gray-50 rounded-xl w-full aspect-[4/3]">
+            <div className="flex items-center justify-center bg-gray-50 rounded-xl w-full h-[calc(70vh-3rem)] flex-shrink-0">
               <div className="text-center text-gray-500">
                 <FontAwesomeIcon icon={faCamera} className="text-6xl mb-4 text-gray-400" />
                 <p className="text-lg">Select an image to preview</p>

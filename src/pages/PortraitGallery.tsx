@@ -10,7 +10,7 @@ const PortraitGallery: React.FC = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Hero Section */}
-      <div className="px-4 sm:px-8 lg:px-40 flex justify-center py-6 lg:py-8">
+      <div className="px-4 sm:px-8 lg:px-40 flex justify-center py-6 lg:py-8 flex-shrink-0">
         <div className="flex flex-col max-w-[960px] w-full">
           <h2 className="text-[#141414] tracking-tight text-2xl sm:text-3xl lg:text-[28px] font-bold leading-tight px-4 text-center pb-4 pt-4">
             Portrait Photography
@@ -24,7 +24,7 @@ const PortraitGallery: React.FC = () => {
       </div>
       
       {/* Portrait Gallery with Lens Preview */}
-      <div className="w-full px-4 sm:px-8 lg:px-12 py-4 flex-1">
+      <div className="w-full px-4 sm:px-8 lg:px-12 py-4">
         <GalleryLayout 
           images={randomizedImages}
           forceSquare={true}
@@ -32,7 +32,7 @@ const PortraitGallery: React.FC = () => {
       </div>
       
       {/* Call to Action Section */}
-      <div className="bg-[#f8f9fa] py-8 sm:py-12 mt-auto">
+      <div className="bg-[#f8f9fa] py-8 sm:py-12 flex-shrink-0">
         <div className="px-4 sm:px-8 lg:px-40">
           <div className="max-w-[960px] mx-auto text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-[#141414] mb-4">
