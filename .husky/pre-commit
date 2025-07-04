@@ -4,4 +4,3 @@
 # Use npx directly instead of npm run
 npx prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,md}"
 git add .
-git push --force
