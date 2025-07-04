@@ -130,7 +130,7 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.alt}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-h-[calc(70vh-3rem)] w-auto object-contain"
                   loading="lazy"
                 />
               </div>
