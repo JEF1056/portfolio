@@ -32,12 +32,12 @@ const Home: React.FC = () => {
       
       <Divider />
       
-      <div className="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+      <div id="portfolio" className="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
         <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
           {/* Portrait Photography Section */}
           <PhotoCategory 
             title="Portrait"
-            description="Elevate your personal brand with our professional portrait photography. We focus on capturing your unique personality and style in every frame."
+            description="Discover your authentic self through intimate portraiture that reveals the essence of who you are. Each session is a collaborative journey to capture your unique personality, creating timeless images that tell your story with artistry and emotion."
             route="/gallery/portrait"
             featuredImage={portraitImages.featuredImage}
             galleryImages={portraitImages.galleryImages}
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         {/* Event Photography Section */}
         <PhotoCategory 
           title="Event"
-          description="Capture the essence of your special moments with our event photography services. From weddings to corporate gatherings, we specialize in creating timeless memories."
+          description="From intimate celebrations to grand milestones, I document the authentic emotions and precious connections that make your events unforgettable. Every moment becomes a treasured memory, captured with passion and precision."
           route="/gallery/event"
           featuredImage={eventImages.featuredImage}
           galleryImages={eventImages.galleryImages}
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         {/* Concert Photography Section */}
         <PhotoCategory 
           title="Concert"
-          description="Experience the energy and excitement of live music through our concert photography. We capture the dynamic performances and passionate crowds that make each show unforgettable."
+          description="Feel the pulse of live music through dynamic concert photography that captures the raw energy between artist and audience. From intimate acoustic sets to electrifying arena shows, I freeze those explosive moments that define the magic of live performance."
           route="/gallery/concert"
           featuredImage={concertImages.featuredImage}
           galleryImages={concertImages.galleryImages}
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
         {/* Miscellaneous Photography Section */}
         <PhotoCategory 
           title="Miscellaneous"
-          description="Life's beautiful spontaneous moments deserve to be captured too. Explore our collection of creative shots that don't fit in a box but capture the heart perfectly."
+          description="Sometimes the most captivating images emerge from unexpected moments and creative experiments. This collection celebrates the art of finding beauty everywhere - from street photography to abstract compositions that don't fit in traditional categories."
           route="/gallery/miscellaneous"
           featuredImage={miscellaneousImages.featuredImage}
           galleryImages={miscellaneousImages.galleryImages}

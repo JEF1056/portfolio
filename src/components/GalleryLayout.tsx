@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useMultipleImageAspectRatios } from '../hooks/useImageAspectRatio';
-import { ImageLens } from './ImageLens';
+import { Lens } from './Lens';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import type { GalleryImage } from '../types';
 
 interface GalleryLayoutProps {
@@ -26,9 +28,7 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
     setSelectedImage(image);
   };
 
-  const handleClosePreview = () => {
-    setSelectedImage(null);
-  };
+
 
   if (loading) {
     return (
@@ -54,14 +54,14 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </h2>
       )}
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[60vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-[60vh] lg:h-[65vh]">
         {/* Left Side: Image Grid */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-[#141414] mb-4">
-            Gallery ({images.length} photos)
+        <div className="flex flex-col h-full">
+          <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
+            {images.length} photos
           </h3>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[70vh] overflow-y-auto pr-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1 overflow-y-auto pr-2 max-h-full">
             {images.map((image) => {
               const dimensions = getDimensions(image.src);
               
@@ -115,16 +115,36 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </div>
         
         {/* Right Side: Image Lens Preview */}
-        <div className="lg:sticky lg:top-8 lg:self-start">
-          <h3 className="text-lg font-semibold text-[#141414] mb-4">
+        <div className="flex flex-col h-full">
+          <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
             {selectedImage ? 'Image Preview' : 'Select an Image'}
           </h3>
           
-          <ImageLens
-            image={selectedImage}
-            onClose={handleClosePreview}
-            className="w-full h-[60vh] lg:h-[70vh]"
-          />
+          {selectedImage ? (
+            <div className="w-full aspect-[4/3]">
+              <Lens
+                zoomFactor={2}
+                lensSize={150}
+              >
+              <div className="w-full h-full bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </Lens>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center bg-gray-50 rounded-xl w-full aspect-[4/3]">
+              <div className="text-center text-gray-500">
+                <FontAwesomeIcon icon={faCamera} className="text-6xl mb-4 text-gray-400" />
+                <p className="text-lg">Select an image to preview</p>
+                <p className="text-sm">Click on any image from the gallery</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

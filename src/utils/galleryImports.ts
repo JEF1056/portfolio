@@ -3,42 +3,50 @@ import type { GalleryImage, GalleryCategory } from '../types';
 // Direct imports for each category - more reliable than dynamic filtering
 const portraitImagesModules = import.meta.glob('../assets/portrait/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const portraitFeaturedModules = import.meta.glob('../assets/portrait/featured/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const eventImagesModules = import.meta.glob('../assets/event/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const eventFeaturedModules = import.meta.glob('../assets/event/featured/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const concertImagesModules = import.meta.glob('../assets/concert/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const concertFeaturedModules = import.meta.glob('../assets/concert/featured/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const miscellaneousImagesModules = import.meta.glob('../assets/misc/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 const miscellaneousFeaturedModules = import.meta.glob('../assets/misc/featured/*.{png,jpg,jpeg,svg,webp}', { 
   eager: true,
-  as: 'url'
+  query: '?url',
+  import: 'default'
 });
 
 /**
@@ -46,8 +54,8 @@ const miscellaneousFeaturedModules = import.meta.glob('../assets/misc/featured/*
  */
 const createCategoryFromModules = (
   categoryName: string, 
-  imagesModules: Record<string, string>, 
-  featuredModules: Record<string, string>
+  imagesModules: Record<string, unknown>, 
+  featuredModules: Record<string, unknown>
 ): GalleryCategory => {
   // Process regular images
   const images: GalleryImage[] = Object.entries(imagesModules).map(([path, src]) => {

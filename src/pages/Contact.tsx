@@ -14,9 +14,9 @@ const Contact: React.FC = () => {
             Get In Touch
           </h2>
           <p className="text-[#141414] text-base sm:text-lg font-normal leading-normal pb-8 pt-1 px-4 text-center max-w-4xl mx-auto">
-            I'd love to hear about your next project and discuss how we can work together to create something amazing. 
+            I'd love to hear about your next project and discuss how I can help bring your vision to life. 
             Whether you're planning an event, looking for portrait work, or need photography for any occasion, 
-            let's connect and bring your vision to life.
+            let's connect and create something beautiful together.
           </p>
           
           {/* Contact Information Card */}

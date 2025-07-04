@@ -91,9 +91,9 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 hero-fade-up-delay-long">
               <button 
                 onClick={() => {
-                  const firstCategory = document.querySelector('[data-attribute="portrait"]');
-                  if (firstCategory) {
-                    firstCategory.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const portfolioSection = document.getElementById('portfolio');
+                  if (portfolioSection) {
+                    portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
                 className="w-full sm:w-auto px-8 py-3 bg-[#141414] text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
