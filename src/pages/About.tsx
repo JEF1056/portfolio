@@ -1,6 +1,8 @@
 import React from 'react';
+import { ImageGrid } from '../components/ImageGrid';
 
 const About: React.FC = () => {
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -17,27 +19,12 @@ const About: React.FC = () => {
             of nature, or the celebration of life's most precious events.
           </p>
           
-          {/* Image Gallery Grid */}
-          <div className="flex w-full bg-white p-4">
-            <div className="w-full gap-1 sm:gap-2 overflow-hidden bg-white aspect-[3/2] rounded-xl grid grid-cols-[2fr_1fr_1fr]">
-              <img 
-                src="https://images.unsplash.com/photo-1606721977440-052e7c7a1d4c?w=600&h=800&fit=crop&crop=center"
-                alt="Photography work sample"
-                className="w-full h-full object-cover rounded-none row-span-2"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop&crop=center"
-                alt="Concert photography sample"
-                className="w-full h-full object-cover rounded-none col-span-2"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop&crop=center"
-                alt="Nature photography sample"
-                className="w-full h-full object-cover rounded-none col-span-2"
-              />
-            </div>
-          </div>
         </div>
+      </div>
+      
+      {/* Full-width Image Gallery */}
+      <div className="w-full px-4 sm:px-8 lg:px-12 py-8">
+        <ImageGrid />
       </div>
       
       {/* Call to Action Section */}
