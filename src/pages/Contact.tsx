@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { contactConfig } from '../config/contact';
 
 const Contact: React.FC = () => {
   return (
@@ -26,10 +27,10 @@ const Contact: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-[#141414] mb-4">Get In Touch</h3>
               <a 
-                href="mailto:jessefan2002@gmail.com" 
+                href={`mailto:${contactConfig.email.address}`} 
                 className="text-lg text-[#141414] hover:text-gray-600 transition-colors duration-200 font-medium"
               >
-                jessefan2002@gmail.com
+                {contactConfig.email.address}
               </a>
             </div>
           </div>
@@ -40,7 +41,7 @@ const Contact: React.FC = () => {
             <div className="flex justify-center gap-8">
               {/* Instagram */}
               <a 
-                href="https://instagram.com/really_not_jake" 
+                href={`https://instagram.com/${contactConfig.instagram.username}`} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center transition-transform duration-300 hover:scale-110"
@@ -49,14 +50,14 @@ const Contact: React.FC = () => {
                   <FontAwesomeIcon icon={faInstagram} className="text-2xl text-white" />
                 </div>
                 <span className="text-sm font-medium text-[#141414] group-hover:text-gray-600 transition-colors duration-200">
-                  @really_not_jake
+                  @{contactConfig.instagram.username}
                 </span>
               </a>
 
               
               {/* Email (as social icon) */}
               <a 
-                href="mailto:jessefan2002@gmail.com" 
+                href={`mailto:${contactConfig.email.address}`} 
                 className="group flex flex-col items-center transition-transform duration-300 hover:scale-110"
               >
                 <div className="w-16 h-16 bg-[#141414] rounded-full flex items-center justify-center mb-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
