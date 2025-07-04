@@ -1,106 +1,135 @@
-import type { GalleryImage, GalleryCategory } from '../types';
+import type { GalleryImage, GalleryCategory } from "../types";
 
 // Direct imports for each category - more reliable than dynamic filtering
-const portraitImagesModules = import.meta.glob('../assets/portrait/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const portraitImagesModules = import.meta.glob(
+  "../assets/portrait/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const portraitFeaturedModules = import.meta.glob('../assets/portrait/featured/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const portraitFeaturedModules = import.meta.glob(
+  "../assets/portrait/featured/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const eventImagesModules = import.meta.glob('../assets/event/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const eventImagesModules = import.meta.glob(
+  "../assets/event/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const eventFeaturedModules = import.meta.glob('../assets/event/featured/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const eventFeaturedModules = import.meta.glob(
+  "../assets/event/featured/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const concertImagesModules = import.meta.glob('../assets/concert/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const concertImagesModules = import.meta.glob(
+  "../assets/concert/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const concertFeaturedModules = import.meta.glob('../assets/concert/featured/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const concertFeaturedModules = import.meta.glob(
+  "../assets/concert/featured/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const miscellaneousImagesModules = import.meta.glob('../assets/misc/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const miscellaneousImagesModules = import.meta.glob(
+  "../assets/misc/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
-const miscellaneousFeaturedModules = import.meta.glob('../assets/misc/featured/*.{png,jpg,jpeg,svg,webp}', { 
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+const miscellaneousFeaturedModules = import.meta.glob(
+  "../assets/misc/featured/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 
 /**
  * Helper function to create gallery category from modules
  */
 const createCategoryFromModules = (
-  categoryName: string, 
-  imagesModules: Record<string, unknown>, 
-  featuredModules: Record<string, unknown>
+  categoryName: string,
+  imagesModules: Record<string, unknown>,
+  featuredModules: Record<string, unknown>,
 ): GalleryCategory => {
   // Process regular images
-  const images: GalleryImage[] = Object.entries(imagesModules).map(([path, src]) => {
-    const filename = path.split('/').pop() || '';
-    const name = filename.replace(/\.(png|jpe?g|svg|webp)$/i, '');
-    
-    return {
-      id: `${categoryName}-${name}`,
-      src: src as string,
-      alt: `${categoryName} photography - ${name}`,
-      filename,
-      category: categoryName,
-      isFeatured: false
-    };
-  });
+  const images: GalleryImage[] = Object.entries(imagesModules).map(
+    ([path, src]) => {
+      const filename = path.split("/").pop() || "";
+      const name = filename.replace(/\.(png|jpe?g|svg|webp)$/i, "");
+
+      return {
+        id: `${categoryName}-${name}`,
+        src: src as string,
+        alt: `${categoryName} photography - ${name}`,
+        filename,
+        category: categoryName,
+        isFeatured: false,
+      };
+    },
+  );
 
   // Process featured image
   let featuredImage: GalleryImage | undefined;
   const featuredEntries = Object.entries(featuredModules);
   if (featuredEntries.length > 0) {
     const [path, src] = featuredEntries[0]; // Take the first featured image
-    const filename = path.split('/').pop() || '';
-    const name = filename.replace(/\.(png|jpe?g|svg|webp)$/i, '');
-    
+    const filename = path.split("/").pop() || "";
+    const name = filename.replace(/\.(png|jpe?g|svg|webp)$/i, "");
+
     featuredImage = {
       id: `${categoryName}-featured-${name}`,
       src: src as string,
       alt: `${categoryName} photography - featured - ${name}`,
       filename,
       category: categoryName,
-      isFeatured: true
+      isFeatured: true,
     };
   }
 
   return {
     name: categoryName,
     images,
-    featuredImage
+    featuredImage,
   };
 };
 
 /**
  * Get random images from a category (excluding featured)
  */
-export const getRandomImages = (category: GalleryCategory, count: number): GalleryImage[] => {
+export const getRandomImages = (
+  category: GalleryCategory,
+  count: number,
+): GalleryImage[] => {
   const shuffled = [...category.images].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 };
@@ -108,7 +137,9 @@ export const getRandomImages = (category: GalleryCategory, count: number): Galle
 /**
  * Get all images from a category (including featured) in random order
  */
-export const getAllImagesRandom = (category: GalleryCategory): GalleryImage[] => {
+export const getAllImagesRandom = (
+  category: GalleryCategory,
+): GalleryImage[] => {
   const allImages = [...category.images];
   if (category.featuredImage) {
     allImages.push(category.featuredImage);
@@ -117,15 +148,31 @@ export const getAllImagesRandom = (category: GalleryCategory): GalleryImage[] =>
 };
 
 // Pre-create gallery categories using direct imports
-export const portraitGallery = createCategoryFromModules('portrait', portraitImagesModules, portraitFeaturedModules);
-export const eventGallery = createCategoryFromModules('event', eventImagesModules, eventFeaturedModules);
-export const concertGallery = createCategoryFromModules('concert', concertImagesModules, concertFeaturedModules);
-export const miscellaneousGallery = createCategoryFromModules('misc', miscellaneousImagesModules, miscellaneousFeaturedModules);
+export const portraitGallery = createCategoryFromModules(
+  "portrait",
+  portraitImagesModules,
+  portraitFeaturedModules,
+);
+export const eventGallery = createCategoryFromModules(
+  "event",
+  eventImagesModules,
+  eventFeaturedModules,
+);
+export const concertGallery = createCategoryFromModules(
+  "concert",
+  concertImagesModules,
+  concertFeaturedModules,
+);
+export const miscellaneousGallery = createCategoryFromModules(
+  "misc",
+  miscellaneousImagesModules,
+  miscellaneousFeaturedModules,
+);
 
 // Helper to get all available galleries
 export const allGalleries = {
   portrait: portraitGallery,
   event: eventGallery,
   concert: concertGallery,
-  miscellaneous: miscellaneousGallery
+  miscellaneous: miscellaneousGallery,
 };

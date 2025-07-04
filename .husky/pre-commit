@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Use npx directly instead of npm run
+npx prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,md}"
+git add .
+git push --force

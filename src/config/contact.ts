@@ -1,10 +1,10 @@
-import type { ContactConfig } from '../types';
+import type { ContactConfig } from "../types";
 
 export const contactConfig: ContactConfig = {
   email: {
-    address: 'jessefan2002@gmail.com'
+    address: "jessefan2002@gmail.com",
   },
   instagram: {
-    username: 'really_not_jake'
-  }
+    username: "really_not_jake",
+  },
 };

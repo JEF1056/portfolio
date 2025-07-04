@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { getImageDimensions } from '../utils/imageAspectRatio';
-import type { ImageDimensions } from '../utils/imageAspectRatio';
+import { useState, useEffect } from "react";
+import { getImageDimensions } from "../utils/imageAspectRatio";
+import type { ImageDimensions } from "../utils/imageAspectRatio";
 
 interface UseImageAspectRatioResult {
   dimensions: ImageDimensions | null;
@@ -37,9 +37,9 @@ export const useImageAspectRatio = (src: string): UseImageAspectRatioResult => {
         setDimensions({
           width: 400,
           height: 300,
-          aspectRatio: 4/3,
-          orientation: 'landscape',
-          aspectClass: 'aspect-[4/3]'
+          aspectRatio: 4 / 3,
+          orientation: "landscape",
+          aspectClass: "aspect-[4/3]",
         });
       });
   }, [src]);
@@ -51,7 +51,9 @@ export const useImageAspectRatio = (src: string): UseImageAspectRatioResult => {
  * Hook for handling multiple images with aspect ratios
  */
 export const useMultipleImageAspectRatios = (sources: string[]) => {
-  const [dimensionsMap, setDimensionsMap] = useState<Map<string, ImageDimensions>>(new Map());
+  const [dimensionsMap, setDimensionsMap] = useState<
+    Map<string, ImageDimensions>
+  >(new Map());
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<Map<string, string>>(new Map());
   const [initialized, setInitialized] = useState(false);
@@ -73,26 +75,31 @@ export const useMultipleImageAspectRatios = (sources: string[]) => {
         const dimensions = await getImageDimensions(src);
         newDimensionsMap.set(src, dimensions);
       } catch (error) {
-        newErrors.set(src, error instanceof Error ? error.message : 'Unknown error');
+        newErrors.set(
+          src,
+          error instanceof Error ? error.message : "Unknown error",
+        );
         // Set fallback dimensions
         newDimensionsMap.set(src, {
           width: 400,
           height: 300,
-          aspectRatio: 4/3,
-          orientation: 'landscape',
-          aspectClass: 'aspect-[4/3]'
+          aspectRatio: 4 / 3,
+          orientation: "landscape",
+          aspectClass: "aspect-[4/3]",
         });
       }
     });
 
-    Promise.all(loadPromises).then(() => {
-      setDimensionsMap(newDimensionsMap);
-      setErrors(newErrors);
-      setLoading(false);
-    }).catch(() => {
-      // Ensure loading is set to false even if something goes wrong
-      setLoading(false);
-    });
+    Promise.all(loadPromises)
+      .then(() => {
+        setDimensionsMap(newDimensionsMap);
+        setErrors(newErrors);
+        setLoading(false);
+      })
+      .catch(() => {
+        // Ensure loading is set to false even if something goes wrong
+        setLoading(false);
+      });
   }, []); // Empty dependency array - only run once
 
   const getDimensions = (src: string): ImageDimensions | null => {
