@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import EventGallery from './pages/EventGallery';
-import PortraitGallery from './pages/PortraitGallery';
-import StreetGallery from './pages/StreetGallery';
-import NatureGallery from './pages/NatureGallery';
+import Portrait from './pages/Portrait';
 import ConcertGallery from './pages/ConcertGallery';
+import MiscellaneousGallery from './pages/MiscellaneousGallery';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -17,10 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery/event" element={<EventGallery />} />
-          <Route path="/gallery/portrait" element={<PortraitGallery />} />
-          <Route path="/gallery/street" element={<StreetGallery />} />
-          <Route path="/gallery/nature" element={<NatureGallery />} />
+          <Route path="/gallery/portrait" element={<Portrait />} />
           <Route path="/gallery/concert" element={<ConcertGallery />} />
+          <Route path="/gallery/miscellaneous" element={<MiscellaneousGallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
