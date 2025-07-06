@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       try {
         const colors = await extractColors(mainAvatar, {
           pixels: 10000,
-          distance: 0.22,
+          distance: 0.3,
           colorValidator: (
             red: number,
             green: number,

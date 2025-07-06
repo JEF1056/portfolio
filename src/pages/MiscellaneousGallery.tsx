@@ -31,12 +31,12 @@ const MiscellaneousGallery: React.FC = () => {
       </div>
 
       {/* Miscellaneous Gallery with Lens Preview */}
-      <div className="w-full px-4 sm:px-8 lg:px-12 py-4 flex-1">
+      <div className="w-full px-4 sm:px-8 lg:px-12 py-4 mb-8">
         <GalleryLayout images={randomizedImages} forceSquare={true} />
       </div>
 
       {/* Call to Action Section */}
-      <div className="bg-[#f8f9fa] py-8 sm:py-12 mt-auto">
+      <div className="bg-[#f8f9fa] py-8 sm:py-12">
         <div className="px-4 sm:px-8 lg:px-40">
           <div className="max-w-[960px] mx-auto text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-[#141414] mb-4">

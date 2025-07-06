@@ -52,15 +52,15 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </h2>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-h-[70vh] lg:max-h-[70vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 mb-8 max-h-[50vh] lg:max-h-[70vh]">
         {/* Right Side: Image Lens Preview - Shows first on mobile */}
-        <div className="flex flex-col h-full max-h-[50vh] lg:max-h-[70vh] order-1 lg:order-2 mb-6 lg:mb-0">
+        <div className="flex flex-col h-full max-h-[35vh] lg:max-h-[70vh] order-1 lg:order-2 mb-3 lg:mb-0">
           <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
             {selectedImage ? "Image Preview" : "Select an Image"}
           </h3>
 
           {selectedImage ? (
-            <div className="rounded-xl w-full h-[calc(50vh-3rem)] lg:h-[calc(70vh-3rem)] bg-gray-100 flex-shrink-0 flex items-center justify-center">
+            <div className="rounded-xl w-full h-[calc(35vh-3rem)] lg:h-[calc(70vh-3rem)] bg-gray-100 flex-shrink-0 flex items-center justify-center">
               <Lens zoomFactor={2} lensSize={150} className="h-full w-full">
                 <img
                   src={selectedImage.src}
@@ -71,7 +71,7 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
               </Lens>
             </div>
           ) : (
-            <div className="flex items-center justify-center bg-gray-50 rounded-xl w-full h-[calc(50vh-3rem)] lg:h-[calc(70vh-3rem)] flex-shrink-0">
+            <div className="flex items-center justify-center bg-gray-50 rounded-xl w-full h-[calc(35vh-3rem)] lg:h-[calc(70vh-3rem)] flex-shrink-0">
               <div className="text-center text-gray-500">
                 <FontAwesomeIcon
                   icon={faCamera}
@@ -85,12 +85,12 @@ export const GalleryLayout: React.FC<GalleryLayoutProps> = ({
         </div>
 
         {/* Left Side: Image Grid */}
-        <div className="flex flex-col h-full max-h-[50vh] lg:max-h-[70vh] order-2 lg:order-1">
+        <div className="flex flex-col h-full max-h-[35vh] lg:max-h-[70vh] order-2 lg:order-1">
           <h3 className="text-lg font-semibold text-[#141414] mb-4 flex-shrink-0">
             {images.length} photos
           </h3>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1 overflow-y-auto pr-2 max-h-[calc(50vh-3rem)] lg:max-h-[calc(70vh-3rem)]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 flex-1 overflow-y-auto pr-2 max-h-[calc(35vh-3rem)] lg:max-h-[calc(70vh-3rem)]">
             {images.map((image) => {
               const dimensions = getDimensions(image.src);
 

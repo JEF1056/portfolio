@@ -267,7 +267,7 @@ const Header: React.FC = () => {
               >
                 <img
                   className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqDp18zQRKsSt05ojuZCGu610G02T2IdexD-abL0wNnbMKhDjOJRfJtcMHOPLRFbCZTPL1vJgKwJMCCH5D1fG-0xIuU5Z4CHfPJso7afUUrrkKS7YRAKLdk4NxkdK2cWoLb_wzjDXmKzFW6kiMam-ctAjdCTJHI0b_HAoI0lH-Ko7N1SGf71ARQSX-6dHw-M9MMwItw1lTQ6JN6VL79K_Jco_rIMMRYgI11BNVF8EFsRDsYcgqR7bfXeWxezhdC-81rDb1eVM_mKrP"
+                  src={squareAvatar}
                   alt="Profile - Go to About"
                 />
                 <span className="text-[#141414] text-sm font-medium">
